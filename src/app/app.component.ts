@@ -13,18 +13,7 @@ export interface Post {
 
 })
 export class AppComponent implements OnInit{
-  posts: Post[] = [
-    {title: 'хочу выучить Ангуляр', text: 'Все еще хочу выучить', id: 1},
-    {title: 'Следующий блок', text: 'про директивы и пайпы', id: 2}
-  ];
 
-  updatePosts = (post) => {
-    this.posts = [post, ...this.posts];
-  }
-  deletePost = (id: number) => {
-    console.log('id');
-    this.posts = this.posts.filter(p => p.id !== id);
-  }
 
   ngOnInit(): void {
   }
