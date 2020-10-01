@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {Observable} from 'rxjs';
-
+import {Subject, Subscription} from 'rxjs';
+// import {} from 'rxjs/operators';
 export interface Post {
   title: string;
   text: string;
@@ -13,43 +13,19 @@ export interface Post {
 
 })
 export class AppComponent{
-  e: number = Math.E;
-  str = 'hello world';
-  date: Date = new Date();
-  float = 0.42;
-  obj = {
-    a: 1,
-    b: {
-      c: 2,
-      d: {
-        e: 3,
-        f: 4
-      }
-    }
-  };
-  search = '';
-  searchField = 'title';
-
-  posts: Post[] = [
-    {title: 'Beer', text: 'Самое лучшее пиво в мире'},
-    {title: 'Bread', text: 'The best bread in the world'},
-    {title: 'Javascript', text: 'The best language in the world'},
-  ];
-
-  p: Promise<string> = new Promise<string>(resolve => {
-    setTimeout(() => {
-      resolve('Promise resolved');
-    }, 4000);
-  });
-  myDate$: Observable<Date> = new Observable<Date>(obs => {
-    setInterval(() => {
-      obs.next(new Date());
-    }, 1000);
-  });
-  addPost = () => {
-    this.posts.unshift({
-      title: 'Angular 9',
-      text: 'Text'
-    });
+  sub: Subscription;
+  stream$: Subject<number> = new Subject<number>();
+  counter = 0;
+  constructor() {
+    this.sub = this.stream$.subscribe(value => console.log('Subscribe', value));
   }
+  next = () => {
+    this.counter += 1;
+    this.stream$.next(this.counter)
+;  }
+
+  stop = () => {
+    this.sub.unsubscribe();
+  }
+
 }
