@@ -1,10 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 
-export interface Post {
-  title: string;
-  text: string;
-  id?: number;
-}
 
 @Component({
   selector: 'app-root',
@@ -12,9 +7,6 @@ export interface Post {
   styleUrls: ['./app.component.scss'],
 
 })
-export class AppComponent implements OnInit{
-
-
-  ngOnInit(): void {
-  }
+export class AppComponent{
+  isVisible = true;
 }

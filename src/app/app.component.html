@@ -1,6 +1,15 @@
 <div class="container">
   <h1>Angular Directives</h1>
-  <p appStyle="red" [dStyles]="{border: '1px solid blue', borderRadius: '5px'}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, veniam.</p>
-  <p appStyle="blue" [dStyles]="{border: '1px solid red', borderRadius: '5px'}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, veniam.</p>
+  <p appStyle="red" [dStyles]="{border: '1px solid blue', borderRadius: '5px'}">Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. Rem, veniam.</p>
+  <p appStyle="blue" [dStyles]="{border: '1px solid red', borderRadius: '5px'}">Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. Rem, veniam.</p>
+  <button class="btn" (click)="isVisible=!isVisible">toggle</button>
+  <ng-template [appIfnot]="!isVisible">
 
+    <div class="wrap">
+      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, fuga iure magnam modi perspiciatis
+        similique unde. Aliquid culpa dolorem eius.</p>
+    </div>
+  </ng-template>
 </div>
