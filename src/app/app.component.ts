@@ -41,6 +41,11 @@ export class AppComponent{
       resolve('Promise resolved');
     }, 4000);
   });
+  myDate$: Observable<Date> = new Observable<Date>(obs => {
+    setInterval(() => {
+      obs.next(new Date());
+    }, 1000);
+  });
   addPost = () => {
     this.posts.unshift({
       title: 'Angular 9',
