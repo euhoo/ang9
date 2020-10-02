@@ -8,7 +8,7 @@ export class AppCounterService {
   constructor(private logService: LogService) {
   }
 
-  increase = () => {
+  increase(): void {
     this.logService.log('increasing...');
     this.counter++;
   }
