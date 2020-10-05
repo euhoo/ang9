@@ -1,27 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {LOCALE_ID, NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule, Provider} from '@angular/core';
 import localeRu from '@angular/common/locales/ru';
 
 
 import { AppComponent } from './app.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {registerLocaleData} from '@angular/common';
-import { SwitchComponent } from './switch/switch.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AppStoreService} from './services/app-store.service';
+import {AuthInterceptor} from './auth.interceptor';
 
 registerLocaleData(localeRu);
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthInterceptor,
+  multi: true,
+};
 
 @NgModule({
   declarations: [
     AppComponent,
-    SwitchComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ru' },
+    AppStoreService,
+    INTERCEPTOR_PROVIDER,
   ],
   bootstrap: [AppComponent]
 })
