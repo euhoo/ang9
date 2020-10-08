@@ -1,10 +1,9 @@
-import {greet} from './greet';
+import {greet} from './greet'
 
-describe('compute', () => {
+describe('greet', () => {
 
-  it('should include name in result', () => {
+  it('should include name in return message', () => {
     expect(greet('Angular')).toContain('Angular')
-    expect(greet('Angular')).toContain('Hello')
   })
 
 })

@@ -1,3 +1,3 @@
-export const countries = () => {
+export function countries() {
   return ['RU', 'UA', 'BY']
 }
